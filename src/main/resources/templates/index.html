@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>URL Shortener</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<script>
+		function validateForm() {
+		  var url = document.forms["myForm"]["url"].value;
+		  var isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
+		  
+		  if(!isValid){
+	    	alert("URL is not valid!!!\nURL starts with http(s):// or ftp://");
+	    	return false;
+		  }
+		}
+	</script>
+</head>
+<body>
+	<div style="width: 400px">
+		<h2 align="center">URL Shortener</h2>
+
+		<div>
+			<p style="color: red;" th:text="${errorMsg}" />
+		</div>
+
+		<div>
+			<form name="myForm" onsubmit="return validateForm()" method="post">
+				<label for="url">Enter a long URL to create short URL: </label><br/>
+				<input type="text" name="url" th:value="${url}" size="45" required>
+				<input type="submit" value="Shorten URL!"><br/><br/>
+			</form>
+		</div>
+
+
+		<div th:if="${shortURL != null}">
+			URL: <span th:text=${url}></span><br/>
+			Short URL: <a th:href="${shortURL}" target="_blank"> <span
+				th:text="${shortURL}"></span>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>
