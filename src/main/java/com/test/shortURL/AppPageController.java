@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AppPageController {
 	URLShortener urlShortner = new URLShortener();
 
+	/**
+	 * Index page
+	 * 
+	 * @param url
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String index(@RequestParam(name = "url", required = false) String url, Model model) {
 		if (url != null) {
@@ -19,6 +26,13 @@ public class AppPageController {
 		return "index";
 	}
 
+	/**
+	 * Short URL - redirects to the original URL
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/{id}")
 	public String redirect(@PathVariable Integer id, Model model) {
 

@@ -3,6 +3,12 @@ package com.test.shortURL;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Application starter - Spring Boot App
+ * 
+ * @author Nannemia
+ *
+ */
 @SpringBootApplication
 public class App {
 	
